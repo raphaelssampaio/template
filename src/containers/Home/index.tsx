@@ -13,6 +13,11 @@ export default function Home(props: HomeProps) {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.content}>
         <Text>Template</Text>
+        <Text>Template</Text>
+        <Text>Template</Text>
+        <Text>Template</Text>
+        <Text>Template</Text>
+        <Text>Template</Text>
       </View>
     </ScrollView>
   )
