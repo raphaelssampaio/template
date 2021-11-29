@@ -43,20 +43,18 @@ const generateStack = (stackArray: ScreenProp[]) => (
     </Stack.Navigator>
 )
 
-export default function Router() {
+export default function Router () {
 
-  return (
-    <NavigationContainer>
+    return (
+        <NavigationContainer>
 
-        <Stack.Navigator>
-            <Stack.Screen name={'Init'}>
-                {generateStack(stack2)}
-            </Stack.Screen>
-        </Stack.Navigator>
+            <Navigator>
+                <Screen name={'StackName'} component={generateStack(stack2)} />
+            </Navigator>
 
 
-    </NavigationContainer>
-  )
+        </NavigationContainer>
+    )
 }
 
 
