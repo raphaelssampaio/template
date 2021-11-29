@@ -19,40 +19,46 @@ const Stack = createStackNavigator()
 
 const { Navigator, Screen } = createStackNavigator()
 
-const bootStrackStack = [
-    { name: 'ABootAppContainer', component: Home },
-    { name: 'AAppUpdateContainer', component: Home }
-]
 
-const stack2 = [
-    { name: 'BBootAppContainer', component: Home },
-    { name: 'BAppUpdateContainer', component: Home }
-]
-
-
-const stack3 = [
-    { name: 'CBootAppContainer', component: Home },
-    { name: 'CAppUpdateContainer', component: Home }
-]
 
 const generateStack = (stackArray: ScreenProp[]) => (
-    <Stack.Navigator initialRouteName={stackArray[0].name}>
-        {stackArray.map((item, index) => (
-            <Stack.Screen {...item} key={index} options={optionsRouter} />
-        ))}
-    </Stack.Navigator>
+    stackArray.map((item, index) => (
+        <Stack.Screen name={item.name} component={item.component} key={index} options={optionsRouter} />
+    ))
 )
+
+function stack1 () {
+    const stack1 = [
+        { name: 'CBootAppContainer', component: Home },
+        { name: 'CAppUpdateContainer', component: Home }
+    ]
+    return (
+        <Stack.Navigator initialRouteName={stack1[0].name}>
+            {generateStack(stack1)}
+        </Stack.Navigator>
+    )
+}
+
+function bootStrackStack () {
+    const bootStrackStack = [
+        { name: 'ABootAppContainer', component: Home },
+        { name: 'AAppUpdateContainer', component: Home }
+    ]
+    return (
+        <Stack.Navigator initialRouteName={bootStrackStack[0].name}>
+            {generateStack(bootStrackStack)}
+        </Stack.Navigator>
+    )
+}
 
 export default function Router () {
 
     return (
         <NavigationContainer>
-
             <Navigator>
-                <Screen name={'StackName'} component={generateStack(stack2)} />
+                <Screen name={'stack1'} component={stack1} />
+                <Screen name={'bootStrackStack'} component={bootStrackStack} />
             </Navigator>
-
-
         </NavigationContainer>
     )
 }
