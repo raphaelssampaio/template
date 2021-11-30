@@ -2,6 +2,10 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import Home from '../containers/Home'
+import {navigationRef} from "./RootNavigation";
+import Screen2 from '../containers/Screen2';
+import Screen3 from '../containers/Screen3';
+import Screen4 from '../containers/Screen4';
 
 type ScreenProp = {
     name: string,
@@ -30,7 +34,7 @@ const generateStack = (stackArray: ScreenProp[]) => (
 function stack1 () {
     const stack1 = [
         { name: 'CBootAppContainer', component: Home },
-        { name: 'CAppUpdateContainer', component: Home }
+        { name: 'CAppUpdateContainer', component: Screen2 }
     ]
     return (
         <Stack.Navigator initialRouteName={stack1[0].name}>
@@ -41,8 +45,8 @@ function stack1 () {
 
 function bootStrackStack () {
     const bootStrackStack = [
-        { name: 'ABootAppContainer', component: Home },
-        { name: 'AAppUpdateContainer', component: Home }
+        { name: 'ABootAppContainer', component: Screen3 },
+        { name: 'AAppUpdateContainer', component: Screen4 }
     ]
     return (
         <Stack.Navigator initialRouteName={bootStrackStack[0].name}>
@@ -54,10 +58,10 @@ function bootStrackStack () {
 export default function Router () {
 
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
             <Navigator>
                 <Screen name={'stack1'} component={stack1} />
-                <Screen name={'bootStrackStack'} component={bootStrackStack} />
+                <Screen name={'stack2'} component={bootStrackStack} />
             </Navigator>
         </NavigationContainer>
     )
